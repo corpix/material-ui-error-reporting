@@ -11,7 +11,7 @@ class ErrorReporting extends Component {
         action: '',
         error: null,
         autoHideDuration: 10000,
-        getMessage: (props) => props.action + ': ' + props.error.toString(),
+        getMessage: (props) => props.error ? props.action + ': ' + props.error.toString() : '',
         style: {
             backgroundColor: red900,
             color: grey50
