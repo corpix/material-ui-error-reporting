@@ -22,13 +22,23 @@ class ErrorReporting extends Component {
             whiteSpace: 'nowrap',
             overflow: 'hidden'
         }
-    }
+    };
+
+    static propTypes = {
+        open: React.PropTypes.bool,
+        action: React.PropTypes.string,
+        error: React.PropTypes.instanceOf(Error),
+        autoHideDuration: React.PropTypes.number,
+        getMessage: React.PropTypes.func,
+        style: React.PropTypes.object,
+        contentStyle: React.PropTypes.object
+    };
 
     exclusiveProps = [
         'getMessage',
         'error',
         'action'
-    ]
+    ];
 
     getSnackbarProps() {
         return Object
