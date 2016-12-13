@@ -15,7 +15,34 @@ class ErrorReporting extends Component {
         style: {
             backgroundColor: red900,
             color: grey50
+        },
+        contentStyle: {
+            display: 'block',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden'
         }
+    }
+
+    exclusiveProps = [
+        'getMessage',
+        'error',
+        'action'
+    ]
+
+    getSnackbarProps() {
+        return Object
+            .keys(this.props)
+            .filter(
+                (name) => this.exclusiveProps.indexOf(name) === -1
+            )
+            .reduce(
+                (acc, name) => {
+                    acc[name] = this.props[name];
+                    return acc;
+                },
+                {}
+            );
     }
 
     render() {
@@ -27,6 +54,7 @@ class ErrorReporting extends Component {
               style={this.props.style}
               contentStyle={this.props.style}
               bodyStyle={this.props.style}
+              {...this.getSnackbarProps()}
               />
         );
     }
