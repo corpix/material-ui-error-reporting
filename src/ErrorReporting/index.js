@@ -37,7 +37,8 @@ class ErrorReporting extends Component {
     exclusiveProps = [
         'getMessage',
         'error',
-        'action'
+        'action',
+        'dispatch'
     ];
 
     getSnackbarProps() {
