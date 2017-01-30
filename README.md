@@ -3,8 +3,6 @@ material-ui-error-reporting
 
 Simple error reporting component for your material-ui application.
 
-> It depends on react-redux. This dependence may be avoided in the future releases, just fill the PR or open the issue :)
-
 ![Screenshot](screenshot.png)
 
 # Installation
@@ -33,7 +31,11 @@ class App extends Component {
     render() {
         return (
             <div>
-                <ErrorReporting/>
+                <ErrorReporting
+                    open={true}
+                    action="ACTION_NAME"
+                    error={new Error('Hello')}
+                    />
             </div>
         );
     }
