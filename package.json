@@ -1,6 +1,6 @@
 {
   "name": "material-ui-error-reporting",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "A snackbar which show application-wide errors.",
   "main": "lib/ErrorReporting/index.js",
   "scripts": {
@@ -39,7 +39,6 @@
     "material-ui": ">= 0.15.0 <= 0.16.x",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-redux": "^4.4.6",
     "react-tap-event-plugin": "^1.0.0 || ^2.0.0"
   }
 }
