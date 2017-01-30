@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// -*- mode: rjsx -*-
+import React, {Component} from 'react';
 import Snackbar from 'material-ui/Snackbar';
-import { red900, grey50 } from 'material-ui/styles/colors';
+import {red900, grey50} from 'material-ui/styles/colors';
 
 
 class ErrorReporting extends Component {
@@ -71,13 +71,4 @@ class ErrorReporting extends Component {
     }
 }
 
-function mapStoreToProps(state) {
-    const { action, error } = state.errors;
-    return {
-        open: error !== null,
-        action: action,
-        error: error
-    };
-}
-
-export default connect(mapStoreToProps)(ErrorReporting);
+export default ErrorReporting;
