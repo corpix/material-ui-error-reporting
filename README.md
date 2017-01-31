@@ -22,30 +22,54 @@ npm i --save material-ui-error-reporting
 Component:
 
 ``` javascript
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ErrorReporting from 'material-ui-error-reporting';
+
+import {connect} from 'react-redux';
 
 // ...
 
 class App extends Component {
+    static defaultProps = {
+        error: {
+            action: '',
+            error: null
+        }
+    };
+
+    static propTypes = {
+        error: React.PropTypes.object,
+        dispatch: React.PropTypes.func
+    };
+
     render() {
         return (
             <div>
                 <ErrorReporting
-                    open={true}
-                    action="ACTION_NAME"
-                    error={new Error('Hello')}
+                    open={this.props.error.error !== null}
+                    action={this.props.error.action}
+                    error={this.props.error.error}
                     />
             </div>
         );
     }
 }
+
+function mapStoreToProps(state) {
+    return {
+        error: state.errors
+    };
+}
+
+export default connect(mapStoreToProps)(App);
 ```
 
 Reducer:
 
 ``` javascript
-import { ERROR_ADD } from 'store/action';
+import {ERROR_ADD} from 'store/action';
+
+import {get} from 'lodash';
 
 let initialState = {
     action: '',
@@ -57,7 +81,7 @@ export const errors = (state = initialState, action) => {
     case ERROR_ADD:
         return {
             ...state,
-            action: action.payload.action.type,
+            action: get(action.payload, 'action.type', ''),
             error: action.payload.error
         };
     default:
@@ -76,13 +100,13 @@ export const RECEIVED = id('RECEIVED');
 export const FAILED = id('FAILED');
 export const ERROR_ADD = id('ERROR_ADD');
 
-const newAction = (type, payload) => ({ type, payload });
+const newAction = (type, payload) => ({type, payload});
 
 export const requesting = (payload) => newAction(REQUESTING, payload);
 export const received = (payload) => newAction(RECEIVED, payload);
 export const failed = (payload) => newAction(FAILED, payload);
 
-export const errorAdd = (error, action) => newAction(ERROR_ADD, { error, action });
+export const errorAdd = (error, action) => newAction(ERROR_ADD, {error, action});
 ```
 
 Some provider pushing an error:
@@ -114,6 +138,8 @@ export const provide = (criteria) => (dispatch) => {
 | autoHideDuration | `number` | `10000` | Snackbar prop. |
 | getMessage | `function` | `(props) => props.action + ': ' + props.error` | Pure function which will receive `props` as first argument and must return a `string` which should contain error message. Default implementation is a concatenation of the action with error delimited by `: `. |
 | style | `object` | `{backgroundColor: red900, color: grey50}` | Object with the styles for `style`, `contentStyle` and `bodyStyle` of snackbar(will receive a copy into each of this props). |
+| onError | `function` | `(error, action = '') => undefined` | Will be called when component props receives non null `error`. |
+| onClose | `function` | `(reason, error, action = '') => undefined` | Will be called when error message closes. |
 
 # License
 

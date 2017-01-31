@@ -25,7 +25,9 @@ class ErrorReporting extends Component {
             textOverflow: 'ellipsis',
             whiteSpace: 'nowrap',
             overflow: 'hidden'
-        }
+        },
+        onError: (error, action = '') => undefined,
+        onClose: (reason, error, action = '') => undefined
     };
 
     static propTypes = {
@@ -35,15 +37,38 @@ class ErrorReporting extends Component {
         autoHideDuration: React.PropTypes.number,
         getMessage: React.PropTypes.func,
         style: React.PropTypes.object,
-        contentStyle: React.PropTypes.object
+        contentStyle: React.PropTypes.object,
+        onError: React.PropTypes.func,
+        onClose: React.PropTypes.func
     };
 
     exclusiveProps = [
         'getMessage',
         'error',
         'action',
-        'dispatch'
+        'onError',
+        'onClose'
     ];
+
+    constructor(props) {
+        super();
+
+        if (props.error) {
+            props.onError(
+                props.error,
+                props.action
+            );
+        }
+    };
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.error) {
+            nextProps.onError(
+                nextProps.error,
+                nextProps.action
+            );
+        }
+    };
 
     getSnackbarProps() {
         return Object
@@ -58,7 +83,13 @@ class ErrorReporting extends Component {
                 },
                 {}
             );
-    }
+    };
+
+    onClose = (reason) => this.props.onClose(
+        reason,
+        this.props.error,
+        this.props.action
+    );
 
     render() {
         return (
@@ -69,10 +100,11 @@ class ErrorReporting extends Component {
               style={this.props.style}
               contentStyle={this.props.style}
               bodyStyle={this.props.style}
+              onRequestClose={this.onClose}
               {...this.getSnackbarProps()}
               />
         );
-    }
+    };
 }
 
 export default ErrorReporting;
