@@ -1,6 +1,6 @@
 {
   "name": "material-ui-error-reporting",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A snackbar which show application-wide errors.",
   "main": "lib/ErrorReporting/index.js",
   "scripts": {
