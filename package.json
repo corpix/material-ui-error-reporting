@@ -34,11 +34,5 @@
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-tap-event-plugin": "^2.0.0"
-  },
-  "peerDependencies": {
-    "material-ui": ">= 0.15.0 <= 0.16.x",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "react-tap-event-plugin": "^1.0.0 || ^2.0.0"
   }
 }
