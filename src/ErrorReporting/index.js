@@ -1,8 +1,8 @@
 // -*- mode: rjsx -*-
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import Snackbar from 'material-ui/Snackbar';
 import {red900, grey50} from 'material-ui/styles/colors';
-
 
 class ErrorReporting extends Component {
 
@@ -31,15 +31,15 @@ class ErrorReporting extends Component {
     };
 
     static propTypes = {
-        open: React.PropTypes.bool,
-        action: React.PropTypes.string,
-        error: React.PropTypes.instanceOf(Error),
-        autoHideDuration: React.PropTypes.number,
-        getMessage: React.PropTypes.func,
-        style: React.PropTypes.object,
-        contentStyle: React.PropTypes.object,
-        onError: React.PropTypes.func,
-        onClose: React.PropTypes.func
+        open: PropTypes.bool,
+        action: PropTypes.string,
+        error: PropTypes.instanceOf(Error),
+        autoHideDuration: PropTypes.number,
+        getMessage: PropTypes.func,
+        style: PropTypes.object,
+        contentStyle: PropTypes.object,
+        onError: PropTypes.func,
+        onClose: PropTypes.func
     };
 
     exclusiveProps = [
