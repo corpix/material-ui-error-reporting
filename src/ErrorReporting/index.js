@@ -1,6 +1,6 @@
 // -*- mode: rjsx -*-
-import PropTypes from 'prop-types';
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Snackbar from 'material-ui/Snackbar';
 import {red900, grey50} from 'material-ui/styles/colors';
 
