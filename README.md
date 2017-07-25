@@ -1,5 +1,7 @@
 material-ui-error-reporting
-----------------------
+---------------------------
+
+[![Build Status](https://travis-ci.org/corpix/material-ui-error-reporting.svg?branch=master)](https://travis-ci.org/corpix/material-ui-error-reporting)
 
 Simple error reporting component for your material-ui application.
 
