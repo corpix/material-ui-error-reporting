@@ -1,3 +1,6 @@
 node_modules
 lib
+.tern-port
 *.tgz
+/ErrorReporting
+/index.js
