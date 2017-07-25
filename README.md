@@ -23,6 +23,7 @@ Component:
 
 ``` javascript
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import ErrorReporting from 'material-ui-error-reporting';
 
 import {connect} from 'react-redux';
@@ -38,8 +39,8 @@ class App extends Component {
     };
 
     static propTypes = {
-        error: React.PropTypes.object,
-        dispatch: React.PropTypes.func
+        error: PropTypes.object,
+        dispatch: PropTypes.func
     };
 
     render() {
